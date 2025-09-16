@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahi's AI Birthday Photo Lab! 🎉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Happy Birthday, Mahi! 🎂</h1>
+        <p>Click on any photo to get a special AI-generated sensation! 👇</p>
+
+        <div class="photo-gallery">
+            <div class="photo-item">
+                <img src="mahi1.jpg" alt="Mahi Photo 1" data-sensation-text="Pure Joy! ✨">
+                <span class="sensation-popup" style="display: none;"></span>
+            </div>
+            <div class="photo-item">
+                <img src="mahi2.jpg" alt="Mahi Photo 2" data-sensation-text="Stunning! 😍">
+                <span class="sensation-popup" style="display: none;"></span>
+            </div>
+            <div class="photo-item">
+                <img src="mahi3.jpg" alt="Mahi Photo 3" data-sensation-text="Reflecting Beauty! 💖">
+                <span class="sensation-popup" style="display: none;"></span>
+            </div>
+            <div class="photo-item">
+                <img src="mahi4.jpg" alt="Mahi Photo 4" data-sensation-text="Elegant! 🌸">
+                <span class="sensation-popup" style="display: none;"></span>
+            </div>
+            <div class="photo-item">
+                <img src="mahi5.jpg" alt="Mahi Photo 5" data-sensation-text="Charming! 😊">
+                <span class="sensation-popup" style="display: none;"></span>
+            </div>
+            <div class="photo-item">
+                <img src="mahi6.jpg" alt="Mahi Photo 6" data-sensation-text="Radiant! ✨">
+                <span class="sensation-popup" style="display: none;"></span>
+            </div>
+            <div class="photo-item">
+                <img src="mahi7.jpg" alt="Mahi Photo 7" data-sensation-text="Beautiful Smile! 😄" class="rotatable-photo">
+                <script>
+                    // Existing rotation code for single photo...
+
+                    // Add rotation to all photo frames in a circular way
+                    // This will rotate each photo around its own center, creating a circular effect
+                    function rotateAllPhotos() {
+                        const photos = document.querySelectorAll('.photo-gallery .photo-item img');
+                        photos.forEach(photo => {
+                            let rotation = 0;
+
+                            function animate() {
+                                rotation += 5;
+                                photo.style.transform = `rotateY(${rotation}deg) scale(1.05)`;
+                                photo.style.filter = `drop-shadow(0 0 20px #00f6ff) brightness(1.2)`;
+                                if (rotation < 360) {
+                                    requestAnimationFrame(animate);
+                                } else {
+                                    photo.style.transform = '';
+                                    photo.style.filter = '';
+                                }
+                            }
+                            animate();
+                        });
+                    }
+                </script>
+                <!-- Add a button to trigger rotation for all photos -->
+                <button onclick="rotateAllPhotos()">Rotate All Photos 360°</button>
+                <span class="sensation-popup" style="display: none;"></span>
+            </div>
+        </div>
+
+        <div class="birthday-message">
+            <h2>Your Special Birthday Wish:</h2>
+            <p id="main-wish">Click the button below for a special message!</p>
+            <button onclick="generateBirthdayWish()">Get Mahi's Wish</button>
+        </div>
+        <div class="ai-effect-container">
+            <h2>AI Photo Effect</h2>
+            <div id="ai-photo-effect" style="width: 300px; height: 300px; margin: 0 auto; perspective: 800px;">
+                <img src="mahi1.jpg" alt="AI Effect Photo" id="rotating-photo" style="width: 100%; height: 100%; border-radius: 20px; box-shadow: 0 0 40px 10px #a3eaff, 0 0 80px 20px #ffb3e6;">
+            </div>
+            <button onclick="startRotation()">Rotate 360°</button>
+        </div>
+        <script>
+            let rotation = 0;
+            let rotating = false;
+
+            function startRotation() {
+                if (rotating) return;
+                rotating = true;
+                const photo = document.getElementById('rotating-photo');
+                rotation = 0;
+
+                function animate() {
+                    rotation += 5;
+                    photo.style.transform = `rotateY(${rotation}deg) scale(1.05)`;
+                    photo.style.filter = `drop-shadow(0 0 20px #00f6ff) brightness(1.2)`;
+                    if (rotation < 360) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        photo.style.transform = '';
+                        photo.style.filter = '';
+                        rotating = false;
+                    }
+                }
+                animate();
+            }
+        </script>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
